@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'war' // Servlet 실행을 위한 WAR 패키징
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0' // Servlet 5.0 지원
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
